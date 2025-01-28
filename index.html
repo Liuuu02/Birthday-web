@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正常网站</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            width: 350px;
+        }
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('background.webp'); 
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+        #content {
+            position: relative;
+            z-index: 2;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: royalblue;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="background"></div>
+        <div id="content">
+            <img id="displayImage" src="" alt="GIF" />
+            <p id="message"></p>
+            <button onclick="nextStep()">Oke</button>
+        </div>
+    </div>
+    
+    <script>
+        let steps = [
+            { img: "gif1.webp", message: "点击进入" },
+            { img: "gif2.webp", message: "我有一个东西" },
+            { img: "gif3.webp", message: "快点再点击一次吧" },
+            { img: "gambar.jpg", message: "祝你生日快乐，大哥。祝你今年有更多成就、更多笑声和更多精彩的时刻。祝你玩得开心，愿上帝保佑你，祝你一切顺利。" }
+        ];
+        
+        let currentStep = 0;
+        let displayImage = document.getElementById("displayImage");
+        let message = document.getElementById("message");
+        
+        function nextStep() {
+            if (currentStep < steps.length) {
+                displayImage.src = steps[currentStep].img;
+                message.innerText = steps[currentStep].message;
+                currentStep++;
+            } else {
+                alert("就这样，生日快乐");
+            }
+        }
+        
+        nextStep();
+    </script>
+</body>
+</html>
